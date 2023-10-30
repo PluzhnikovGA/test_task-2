@@ -10,8 +10,8 @@ import { useData } from "./hooks/useData";
 
 
 export function AppComponent() {
-  const [usersData] = useData();
   const [name, setName] = React.useState('');
+  const [usersData] = useData(name);
 
   const NameProvider = changeNameContext.Provider;
 

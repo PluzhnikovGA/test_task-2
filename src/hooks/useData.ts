@@ -10,18 +10,15 @@ export interface IUseData {
   position_name?: string,
   department?: string,
   hire_date?: string,
+  found?: boolean,
 }
 
-export function useData () {
+export function useData (name: string = "") {
   const [dataArray, setDataArray] = useState<Array<IUseData>>([{}])
-  const {newName, onChange}  = useContext(changeNameContext);
-
-  console.log(typeof newName, newName);
-  const valu = ""
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:3000?term=${valu}`)
+      .get(`http://127.0.0.1:3000?term=${name}`)
       .then((resp) => {
         const usersData = resp.data.map(
           (item: IUseData) => ({
@@ -32,12 +29,18 @@ export function useData () {
             position_name: item.position_name,
             department: item.department,
             hire_date: item.hire_date,
+            found: true,
           })
         );
         setDataArray(usersData)
       })
       .catch(console.log);
-  }, [valu])
+  }, [name])
+
+
+  if (dataArray.length === 0) {
+    setDataArray([{found: false}])
+  }
 
   return [dataArray]
 }

@@ -3,23 +3,24 @@ import styles from './cardslist.css';
 import { GenericList } from '../GenericList';
 import { contextData } from '../../context/DataContext';
 import { createListUsers } from '../../utils/js/createListUsers';
+import { Card } from './Card';
+import { IUseData } from '../../hooks/useData';
 
 
 export function CardsList() {
-  const data = useContext(contextData);
+  const data: IUseData[] = useContext(contextData);
 
-  // return (
-  //   <div>
-  //     Загрузка...
-  //   </div>
-  // );
-
-  console.log(data);
 
   if (Object.keys(data[0]).length === 0) {
     return (
       <div>
         Загрузка...
+      </div>
+    );
+  } else if (!data[0].found) {
+    return (
+      <div>
+        По вашему запросу ничего не найдено.
       </div>
     );
   } else {
