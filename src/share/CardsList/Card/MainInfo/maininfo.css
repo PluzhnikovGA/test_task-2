@@ -1,0 +1,33 @@
+.title {
+  margin-bottom: 23px;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 700;
+  color: rgba(38, 44, 64, 1);
+  letter-spacing: -0.4px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  margin-bottom: 12px;
+  vertical-align: top;
+}
+
+.content:last-child {
+  margin-bottom: 0;
+}
+
+
+.icon {
+  margin-right: 14px;
+}
+
+.text {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: rgba(129, 137, 163, 1);
+  letter-spacing: -0.4px;
+}
