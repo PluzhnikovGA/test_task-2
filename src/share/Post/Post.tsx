@@ -1,16 +1,20 @@
 import React, { MouseEventHandler, useContext, useEffect, useRef } from 'react';
 import styles from './post.css';
 import ReactDOM from 'react-dom';
-import { cardContext } from '../../context/CardContextData';
 
 interface IPost {
   onClose?: () => void;
+  name?: string,
+  phone?: string,
+  email?: string,
+  position_name?: string,
+  department?: string,
+  hire_date?: string,
 }
 
-export function Post({ onClose }: IPost) {
+export function Post({ onClose, name, phone, email, position_name, department, hire_date }: IPost) {
   const refBut = useRef<HTMLButtonElement>(null);
   const ref = useRef<HTMLDivElement>(null);
-  const { name, phone, email, position_name, department, hire_date } = useContext(cardContext)
 
   useEffect(() => {
     function handelClick(event: MouseEvent) {

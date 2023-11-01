@@ -1,10 +1,8 @@
-import React, { useContext } from 'react';
+import React, {useContext} from 'react';
 import styles from './cardslist.css';
-import { GenericList } from '../GenericList';
-import { contextData } from '../../context/DataContext';
-import { createListUsers } from '../../utils/js/createListUsers';
-import { Card } from './Card';
-import { IUseData } from '../../hooks/useData';
+import {contextData} from '../../context/DataContext';
+import {IUseData} from '../../hooks/useData';
+import {Card} from "./Card";
 
 
 export function CardsList() {
@@ -23,13 +21,17 @@ export function CardsList() {
         По вашему запросу ничего не найдено.
       </div>
     );
-  } else {
-    const list = createListUsers(data);
-
-    return (
-      <ul className={styles.cardsList}>
-        <GenericList list={list} />
-      </ul>
-    );
   }
+
+  return (
+    <ul className={styles.cardsList}>
+      {data.map((item) => (
+        <Card
+          key={`${item.name}-${item.email}-${item.phone}`}
+          name={item.name} email={item.email} phone={item.phone}
+          position_name={item.position_name} department={item.department} hire_date={item.hire_date}/>
+      ))}
+    </ul>
+  );
+
 }

@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
 import styles from './maininfo.css';
-import { cardContext } from '../../../../context/CardContextData';
 
-export function MainInfo() {
-  const { name, phone, email } = useContext(cardContext)
+interface IMainInfoProps {
+  name?: string,
+  phone?: string,
+  email?: string
+}
 
+export function MainInfo({ name, phone, email }: IMainInfoProps) {
   return (
     <>
       <h2 className={ styles.title }>{ name }</h2>
